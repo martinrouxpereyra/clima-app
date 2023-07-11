@@ -1,2 +1,1 @@
-# clima-app
-app de consola en node js para clima de ciudades
+# go to master branch to see the app
