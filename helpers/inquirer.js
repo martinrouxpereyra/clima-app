@@ -127,61 +127,10 @@ const listarLugares = async(lugares = []) =>{
 ////////////////////////////////////////////////////////////////
 
 
-////////////////////////////////////////////////////////////////
-//espera a que el usuario confirme si quiere borrar la tarea
-////////////////////////////////////////////////////////////////
-const confirmarBorrar = async(message) =>{
-    const question = [
-        {
-            type:'confirm',
-            name:'ok',
-            message
-        }
-    ]
-    const { ok } = await inquirer.prompt(question);
-    return ok;
-}
-////////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////////
-//hace una lista para sleecionar todas las tareas que queramos completar,
-//si ya esta seleccionada significa que esta completada
-//devuelve los ids de todas las tareas seleccionadas
-////////////////////////////////////////////////////////////////
-const mostrarListadoCheckList = async(tareas = []) =>{
-
-    const choices = tareas.map((tarea, i ) => {
-        
-        const idx = `${i + 1}`.green + `${'.'.green}`;
-
-        return {
-            value: tarea.id,
-            name: `${idx} ${tarea.desc}`,
-            checked: (tarea.completadoEn) ? true : false
-        }
-    });
-    
-    const pregunta = [
-        {
-            type: 'checkbox',
-            name: 'ids',
-            message:'seleccione',
-            choices
-        }
-    ]
-    const { ids } = await inquirer.prompt(pregunta);
-    return ids;
-}
-////////////////////////////////////////////////////////////////
-
 module.exports = {
 
     inquirerMenu,
     pausa,
     leerInput,
     listarLugares,
-    confirmarBorrar,
-    mostrarListadoCheckList
-
 }
